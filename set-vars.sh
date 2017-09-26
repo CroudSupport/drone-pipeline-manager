@@ -13,12 +13,15 @@ echo "writing commit details"
 echo "git_ref:$git_ref"
 echo "git_ref_hash:$git_ref_hash"
 
+mkdir -p protected-files/
+mkdir -p public && mkdir -p public/protected-files/
+
 printf '{"version": "%s","commit": "%s"}\n' $git_ref $git_ref_hash > version.json
 printf '{"version": "%s","commit": "%s"}\n' $git_ref $git_ref_hash > public/version.json
 
 echo "writing log history"
-mkdir -p public/protected-files/ && git --no-pager log > protected-files/commit-log.txt
-mkdir -p public/protected-files/ && git --no-pager log > public/protected-files/commit-log.txt
+git --no-pager log > protected-files/commit-log.txt
+git --no-pager log > public/protected-files/commit-log.txt
 
 echo *************END CROUD VERSION INFO*************
 
