@@ -4,6 +4,8 @@
 # 1 create version.json commit info file
 ############################
 
+echo *************BEGIN CROUD VERSION INFO*************
+
 export git_ref=`git symbolic-ref -q --short HEAD || git describe --tags --exact-match`
 export git_ref_hash=`git rev-parse HEAD`
 
@@ -17,6 +19,8 @@ printf '{"version": "%s","commit": "%s"}\n' $git_ref $git_ref_hash > public/vers
 echo "writing log history"
 mkdir -p public/protected-files/ && git --no-pager log > protected-files/commit-log.txt
 mkdir -p public/protected-files/ && git --no-pager log > public/protected-files/commit-log.txt
+
+echo *************END CROUD VERSION INFO*************
 
 ############################
 # 2 create docker image tag
@@ -33,7 +37,7 @@ mkdir -p public/protected-files/ && git --no-pager log > public/protected-files/
 # rc-*           -> TBC
 # release-*      -> TBC
 
-echo *************CROUD IMAGE TAGGER*************
+echo *************BEGIN CROUD IMAGE TAGGER*************
 
 # set vars
 docker_image_tagging_strategy="$DRONE_BUILD_EVENT"
