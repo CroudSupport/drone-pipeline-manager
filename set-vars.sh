@@ -53,10 +53,10 @@ if [[ "$docker_image_tagging_strategy" == "push" ]];
 then
     echo "build trigger is push event, examining commit message..."
     staging_feature_name=$(echo "staging-${DRONE_COMMIT_BRANCH#*/}" | tr '[:upper:]' '[:lower:]')
-    case $DRONE_COMMIT_MESSAGE in *"[staging]"* ) docker_image_tag=$staging_feature_name ;; *"[integration]"* ) docker_image_tag=integration ;; *) echo "NO MATCHING COMMITS FOUND, HALTING CD BUILD"; exit 1;; esac
+    case $DRONE_COMMIT_MESSAGE in *"[staging]"* ) docker_image_tag=$staging_feature_name ;; *"[integration]"* ) docker_image_tag=integration ;; *) echo "No matching comment found, no tags created for build"; exit 0;; esac
     echo "image tag (from commit message) for build is $docker_image_tag"
     echo $docker_image_tag > .tags
-else if [[ "$docker_image_tagging_strategy" == "tag" ]];
+elif [[ "$docker_image_tagging_strategy" == "tag" ]];
 then
     # echo "image tag (from tag) for build is $docker_image_tag"
     echo "image tag (from tag) for build is TODO"
