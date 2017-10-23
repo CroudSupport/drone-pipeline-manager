@@ -54,11 +54,15 @@ then
     echo "build trigger is push event, examining commit message..."
     staging_feature_name=$(echo "staging-${DRONE_COMMIT_BRANCH#*/}" | tr '[:upper:]' '[:lower:]')
     case $DRONE_COMMIT_MESSAGE in *"[staging]"* ) docker_image_tag=$staging_feature_name ;; *"[integration]"* ) docker_image_tag=integration ;; *) echo "NO MATCHING COMMITS FOUND, HALTING CD BUILD"; exit 1;; esac
-else
-    echo "build trigger is tag....TODO"
+    echo "image tag (from commit message) for build is $docker_image_tag"
+    echo $docker_image_tag > .tags
+else if [[ "$docker_image_tagging_strategy" == "tag" ]];
+then
+    # echo "image tag (from tag) for build is $docker_image_tag"
+    echo "image tag (from tag) for build is TODO"
+    # echo $docker_image_tag > .tags
 fi
 
 
-echo "image tag for build is $docker_image_tag"
-echo $docker_image_tag > .tags
+
 echo *************END CROUD IMAGE TAGGER*************
