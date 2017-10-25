@@ -27,4 +27,5 @@ The logic used is below to ascertain if an image should be published:
 1. if none of the conditions are true then no .tags file should be created and the plug in should exit
 
 ## References
-[croudtech/drone-docker](https://github.com/CroudSupport/drone-pipeline-manager) croudtech/drone-docker Source Code
+
+[croudtech/drone-pipeline-manager](https://hub.docker.com/r/croudtech/drone-pipeline-manager) Docker Image
