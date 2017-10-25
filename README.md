@@ -1,7 +1,7 @@
 # drone-pipeline-manager
 
 
-A Drone plugin to interrogate the last commit and determine, based on either tags or commit messages what image (if any) should be published to the container registry. The Drone plugin is implemted as a bash script.
+A Drone plugin to interrogate the last commit and determine, based on either tags or commit messages what image (if any) should be published to the container registry. The Drone plugin is implemented as a bash script. As well as determining the image tag (if any) this plug in will also write commit infomration to local files.
 
 ## Usage
 
