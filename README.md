@@ -26,5 +26,5 @@ The logic used is below to ascertain if an image should be published:
 1. event is tag and tagname  starts with release-x.y.y => tag should be "release-x.y.z" (not iplemented)
 1. if none of the conditions are true then no .tags file should be created and the plug in should exit
 
-## Rererences
+## References
 [croudtech/drone-docker](https://github.com/CroudSupport/drone-pipeline-manager) croudtech/drone-docker Source Code
